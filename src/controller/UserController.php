@@ -11,4 +11,9 @@ class UserController
 		$view = new View("src/views/user");
 		$view->render('index.php', ['nombres' => $nombres]);
 	}
+
+	function show(){
+		$user = Repo::findById(1);
+		var_dump($user);
+	}
 }
