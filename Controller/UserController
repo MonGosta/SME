@@ -1,0 +1,20 @@
+<?php
+
+
+namespace Controller\User;
+use pisos\Pisostore\View\View;
+use pisos\Pisostore\Model\Piso;
+
+class UserController
+{
+
+
+
+
+
+
+	
+
+
+
+}

@@ -1,0 +1,16 @@
+{
+    "name": "casfid/sme",
+    "description": "Herramienta de comunicacion con redes sociales desde aplicacion mobil",
+    "require": {
+    },
+    "autoload": 
+    {
+        "psr-4": {
+        			"Mongosta\\Model\\": "src/model",
+                    "Mongosta\\Repository\\":"src/repository",
+              		"Mongosta\\Bootstrap\\":"Bootstrap",
+              	    "Mongosta\\Controller\\":"src/controller"
+              	}
+
+    }
+}
