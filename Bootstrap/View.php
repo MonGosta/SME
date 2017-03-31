@@ -1,5 +1,5 @@
 <?php
-namespace Mongosta\Bootstrap\View;
+namespace Mongosta\Bootstrap;
 
 class View
 {
