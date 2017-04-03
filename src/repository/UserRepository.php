@@ -3,16 +3,21 @@ namespace Mongosta\Repository;
 
 use \PDO;
 use Mongosta\Bootstrap\Database as db;
+use Mongosta\Model\UserModel as um;
 
 class UserRepository{
+
+
 	static public function getAll(){
-		$nombres = array(
-			["id"=>"1","nombre"=>"jordi"],
-			["id"=>"2","nombre"=>"josele"],
-			["id"=>"3","nombre"=>"pau"],
-			["id"=>"4","nombre"=>"jorge"],		
-			["id"=>"5","nombre"=>"lorenso"]	
-		);
+		$db = Db::getInstance();
+	    $req = $db->query('SELECT * FROM sme_usuarios');
+
+	    foreach ($req as $usuario) {
+	    	$nombres[] = new um($usuario['nombre'],$usuario['usuario'],$usuario['contrasena'],
+	    		              $usuario['email'],$usuario['telefono'],$usuario['dni'],
+	    		              $usuario['id_cliente']);
+	    }
+	    //$nombres = $req;
 		return $nombres;
     }
 
