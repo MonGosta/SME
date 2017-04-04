@@ -6,8 +6,7 @@ use Mongosta\Bootstrap\Database as Db;
 use Mongosta\Model\UserModel as User;
 
 class UserRepository{
-
-
+  
   	static public function getAll(){
   		$db = Db::getInstance();
   	    $req = $db->query('SELECT * FROM sme_usuarios');
@@ -17,81 +16,64 @@ class UserRepository{
   	    		              $usuario['email'],$usuario['telefono'],$usuario['dni'],
   	    		              $usuario['id_cliente']);
   	    }
-  	    //$nombres = $req;
   		return $nombres;
       }
 
-    static public function findById($id){
-    	    $db = Db::getInstance();
-    	    $id = intval($id);
-  	    $req = $db->prepare('SELECT * FROM sme_usuarios WHERE id= :id');
-  	     $req->execute(array('id' => $id));
-  	     $req = $req->fetch();
-  	    // var_dump($req);
-          $user = new um($req['nombre'],$req['usuario'],$req['contrasena'],
-  	    		              $req['email'],$req['telefono'],$req['dni'],
-  	    		              $req['id_cliente']);
-          
-  	 
-     	    return $user;
+    static public function findByEmail($email){
+      $db = Db::getInstance();
+      $req = $db->prepare('SELECT * FROM sme_usuarios WHERE email= :email');
+      $req->execute(array('email' => $email));
+      $req = $req->fetch();
+
+      $user = new User($req['nombre'],$req['usuario'],$req['contrasena'],
+      	              $req['email'],$req['telefono'],$req['dni']);
+        return $user;
      }
 
-     static public function create(){
+     static public function create($user){
 
      	  $db = Db::getInstance();
         $req = $db->prepare('INSERT INTO sme_usuarios ( nombre, usuario, contrasena, email, 
-        												  telefono,dni, id_cliente) 
-        	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni, 
-        	                             :id_cliente);');
-        $req->execute(array(':nombre' => $this->getNombre(),
-                             ':usuario' => $this->getUsuario(),
-                              ':contrasena' => $this->getContrasena(),
-                              ':email' => $this->getEmail(),
-                              ':telefono' => $this->getTelefono(),
-                              ':dni' => $this->getDni(),
-                              ':id_cliente' => $this->getId_cliente()
-
+        												  telefono,dni) 
+        	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni);');
+        $req->execute(array(':nombre' => $user->getNombre(),
+                             ':usuario' => $user->getUsuario(),
+                              ':contrasena' => $user->getContrasena(),
+                              ':email' => $user->getEmail(),
+                              ':telefono' => $user->getTelefono(),
+                              ':dni' => $user->getDni()
                            )
                       );
 
 
      }
 
-      public static function delete($id){
+      public static function delete($user){
            $db = Db::getInstance();
-           $id = intval($id);
-           $req = $db->prepare('DELETE FROM sme_usuarios WHERE id = :id');
-           $req->execute(array('id' => $id));
-
+           $email = $user->getEmail();
+           $req = $db->prepare('DELETE FROM sme_usuarios WHERE email = :email');
+           $req->execute(array('email' => $email));
       }
 
 
-      public function update(){
+      public function update($user){
         $db = Db::getInstance();
         $req = $db->prepare('UPDATE sme_usuarios SET nombre = :nombre, usuario = :usuario , 
                              contrasena = :contrasena , email = :email , telefono = :telefono , 
-                             dni = :dni , id_cliente = :id_cliente  WHERE id = :id;');
+                             dni = :dni   WHERE email = :email;');
        
-        $req->execute(array(':id' => $this->getId(),
-                            ':nombre' => $this->getNombre(),
-                            ':usuario' => $this->getUsuario(),
-                            ':contrasena' => $this->getContrasena(),
-                            ':email' => $this->getEmail(),
-                            ':telefono' => $this->getTelefono(),
-                            ':dni' => $this->getDni(),
-                            ':id_cliente' => $this->getId_cliente()
+        $req->execute(array(':id' => $user->getId(),
+                            ':nombre' => $user->getNombre(),
+                            ':usuario' => $user->getUsuario(),
+                            ':contrasena' => $user->getContrasena(),
+                            ':email' => $user->getEmail(),
+                            ':telefono' => $user->getTelefono(),
+                            ':dni' => $user->getDni()                            
                             )
                       );
 
       }
 
-     static public function save($user){
-        $id=$user->getEmail();
-        if(findById($id)!=null){
-          update();        
-        }else{
-          User::save();
-        }
-     }
+   
       
 }

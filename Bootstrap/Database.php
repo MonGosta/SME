@@ -7,7 +7,7 @@ class Database
 
  private function __construct(){}
  private function __clone(){}
- private static function connect(): PDO
+ private static function connect()
  {
      
        return new PDO ('mysql:host=localhost;dbname=casfid', "root", "");

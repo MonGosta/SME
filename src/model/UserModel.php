@@ -2,6 +2,7 @@
 
 namespace Mongosta\Model;
 
+use Mongosta\Repository\UserRepository as UserRepo;
 
 
 	class UserModel {
@@ -82,6 +83,27 @@ namespace Mongosta\Model;
     }
       public function setId_ciente($id_ciente){
        $this->id_ciente = $id_ciente;
+    }
+
+    public function save(){
+        if($this->isValid($this->getEmail())){
+          // comporbaciones si hacen falta
+          UserRepo::create($this);
+        }else{
+           UserRepo::update($this);
+        }
+    }
+    public function delete(){
+      //comprobaciones
+      //var_dump($this);
+      UserRepo::delete($this);
+    }
+    private function isValid($email){
+        if(UserRepo::findByEmail($email)->getEmail()!= NULL){
+          return false;        
+        }else{
+          return true;
+        }
     }
 
 }
