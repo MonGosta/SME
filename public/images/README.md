@@ -1,2 +1,0 @@
-# ProyectoPHP
-Images
