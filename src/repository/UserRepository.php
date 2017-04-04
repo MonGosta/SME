@@ -2,7 +2,6 @@
 
 namespace Mongosta\Repository;
 
-use \PDO;
 use Mongosta\Bootstrap\Database as Db;
 use Mongosta\Model\UserModel as User;
 
@@ -22,6 +21,10 @@ class UserRepository
         return $nombres;
     }
 
+    /**
+     * @param $email
+     * @return User
+     */
     static public function findByEmail($email)
     {
         $db = Db::getInstance();

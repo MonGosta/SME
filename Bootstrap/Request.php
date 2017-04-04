@@ -16,34 +16,35 @@ class Request
         $this->params = array_merge($_POST, $_GET);
     }
 
-    public function getUrl(): string
+    public function getUrl()
     {
 
         return $this->domain . $this->path;
     }
 
-    public function getDomain(): string
+    public function getDomain()
     {
         return $this->domain;
     }
 
-    public function getPath(): string
+    public function getPath()
     {
         return $this->path;
     }
 
-    public function getParams(): array
+    public function getParams()
     {
         return $this->params;
     }
 
-    public function getParam(string $name)
+    public function getParam($name)
     {
-        return $this->params[$name] ?? null;
 
+        return $this->params[$name] ? $this->params[$name] : null;
     }
 
-    public function hasParam(string $name): bool
+
+    public function hasParam($name)
     {
         return isset($this->params[$name]);
     }

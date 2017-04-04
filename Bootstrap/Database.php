@@ -19,7 +19,7 @@ class Database
     private static function connect()
     {
 
-        return new PDO ('mysql:host=localhost;dbname=casfid', "root", "");
+        return new PDO ('mysql:host=localhost;dbname=smc', "root", "25sgbc6A!");
 
     }
 

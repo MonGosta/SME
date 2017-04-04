@@ -1,10 +1,6 @@
 <?php
 require 'vendor/autoload.php'; // Comprueba la ruta
 use Mongosta\Bootstrap\Request;
-use Mongosta\Bootstrap\Config;
-use Mongosta\Bootstrap\Database;
-use Mongosta\Controller\UserController;
-
 
 $request = new Request();
 // obtenemos el parámetro o asignamos un valor por defecto

@@ -2,9 +2,9 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'dbname' => 'casfid',
+        'dbname' => 'smc',
         'charset' => 'utf8',
         'user' => 'root',
-        'password' => ''
+        'password' => '25sgbc6A!'
     ]
 ];
