@@ -13,14 +13,14 @@
 		<?php echo $user->getEmail(); ?>
         </a>*/
 	
-	    foreach ($nombres as $user) {
+	    foreach ($events as $event) {
 	    	
 	    
 		echo "<li>";
 		?>
-        <a href="User/show/<?=$user->getNombre(); ?> ">
-		<?php echo $user->getNombre(); ?>
-		<?php echo $user->getEmail(); ?>
+        <a href="User/show/<?=$event->getNombre(); ?> ">
+		<?php echo $event->getNombre(); ?>
+		<?php echo $event->getEmail(); ?>
         </a>
         <?php
 		echo "</li>";

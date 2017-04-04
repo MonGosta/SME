@@ -4,6 +4,7 @@ use Mongosta\Bootstrap\Request;
 use Mongosta\Bootstrap\Config;
 use Mongosta\Bootstrap\Database;
 use Mongosta\Controller\UserController;
+use Mongosta\Controller\ClientController;
 
 
 $request = new Request();

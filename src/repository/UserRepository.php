@@ -22,7 +22,7 @@ class UserRepository{
     static public function findByEmail($email){
       $db = Db::getInstance();
       $req = $db->prepare('SELECT * FROM sme_usuarios WHERE email= :email');
-      $req->execute(array('email' => $email));
+      $req->execute(array(':email' => $email));
       $req = $req->fetch();
 
       $user = new User($req['nombre'],$req['usuario'],$req['contrasena'],

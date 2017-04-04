@@ -1,6 +1,8 @@
 <?php
 
 namespace Mongosta\Model;
+
+use Mongosta\Repository\ClientRepository as ClientRepo;
     
 class ClientModel {
   private $id;
@@ -8,7 +10,7 @@ class ClientModel {
   private $email;
   private $telefono;
 
-  public function __construct($id=null, $nombre="", $email="", $telefono=""){
+  public function __construct($nombre="", $email="", $telefono="",$id=null){
     $this->id = $id;
     $this->nombre = $nombre;
     $this->email = $email;
@@ -42,5 +44,25 @@ class ClientModel {
   public function setTelefono($telefono){
     $this->telefono = $telefono;
   }
+
+   public function save(){
+        if($this->isValid($this->getEmail())){
+          // comporbaciones si hacen falta
+          ClientRepo::create($this);
+        }else{
+           ClientRepo::update($this);
+        }
+    }
+    public function delete(){
+      //comprobaciones
+     ClientRepo::delete($this);
+    }
+    private function isValid($email){
+        if(ClientRepo::findByEmail($email)->getEmail()!= NULL){
+          return false;        
+        }else{
+          return true;
+        }
+    }
 
 }

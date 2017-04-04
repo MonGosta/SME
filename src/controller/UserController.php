@@ -8,22 +8,13 @@ use Mongosta\Model\UserModel as User;
 class UserController
 {
 	function index(){
-
-		//Repo::delete(6);
-		/*$nombres = Repo::getAll();
+		$nombres = Repo::getAll();
 		$view = new View("src/views/user");
-		$view->render('index.php', ['nombres' => $nombres]);*/
-
-		/*$usuario = Repo::findById(3);
-		$view = new View("src/views/user");
-		$view->render('index.php', ['user' => $usuario]);
-		*/
-
+		$view->render('index.php', ['nombres' => $nombres]);
 	}
 
 	function show(){
 		$user = Repo::findByEmail(1);
-		var_dump($user);
 	}
 
 
