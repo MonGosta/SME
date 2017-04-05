@@ -19,7 +19,7 @@ class EventModel
     private $facebook_pagina;
     private $url;
 
-    public function __construct($id = "", $nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "")
+    public function __construct( $nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "",$id = null)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -162,6 +162,28 @@ class EventModel
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+     public function save(){
+        if($this->isValid($this->getNombre_sms())){
+          // comporbaciones si hacen falta
+          EventRepo::create($this);
+        }else{
+           EventRepo::update($this);
+        }
+    } 
+
+    private function isValid($nombre_sms){
+        if(EventRepo::findByNombre_sms($nombre_sms)->getNombre_sms()!= NULL){
+          return false;        
+        }else{
+          return true;
+        }
+    }
+     public function delete(){
+      //comprobaciones
+      //var_dump($this);
+      EventRepo::delete($this);
     }
 
 }

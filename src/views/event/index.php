@@ -20,7 +20,7 @@
 		?>
         <a href="User/show/<?=$event->getNombre(); ?> ">
 		<?php echo $event->getNombre(); ?>
-		<?php echo $event->getEmail(); ?>
+		<?php echo $event->getNombre_sms(); ?>
         </a>
         <?php
 		echo "</li>";

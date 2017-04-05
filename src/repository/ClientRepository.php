@@ -11,7 +11,7 @@ class ClientRepository{
     $db = Db::getInstance();
     $req = $db->query('SELECT * FROM sme_clientes');
     foreach ($req as $cliente) {
-        $clientes[] = new Client($cliente['id'],$cliente['nombre'],$cliente['email'], 
+        $clientes[] = new Client($cliente['ID'],$cliente['nombre'],$cliente['email'], 
                                 $cliente['telefono']);
     }
     return $clientes;
@@ -45,15 +45,15 @@ class ClientRepository{
   }
 
 
-  public function update(){
+  public function update($client){
     $db = Db::getInstance();
     $req = $db->prepare('UPDATE sme_clientes SET nombre = :nombre, email = :email , telefono = :telefono ,id = :id  WHERE email = :email;');
    
-    $req->execute(array(':id' => $this->getId(),
-                        ':nombre' => $this->getNombre(),
-                        ':email' => $this->getEmail(),
-                        ':telefono' => $this->getTelefono(),
-                        ':id' => $this->getId()
+    $req->execute(array(':id' => $client->getId(),
+                        ':nombre' => $client->getNombre(),
+                        ':email' => $client->getEmail(),
+                        ':telefono' => $client->getTelefono(),
+                        ':id' => $client->getId()
                         )
                   );
 
