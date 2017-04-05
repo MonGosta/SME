@@ -23,8 +23,8 @@ class UserController
 
     function register()
     {
-
         if (isset($_POST['nombre'])) {
+
             $user = new User ($_POST['nombre'],
                 $_POST['usuario'],
                 $_POST['contrasena'],
@@ -34,6 +34,7 @@ class UserController
             );
             $user->save();
         } else {
+
             $user = new User();
         }
         $view = new View("src/views/user");

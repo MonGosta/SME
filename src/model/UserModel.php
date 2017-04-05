@@ -130,11 +130,14 @@ class UserModel
 
     private function isValid($email)
     {
+        $hola = UserRepo::findByEmail($email)->getEmail();
+        var_dump($hola);
         if (UserRepo::findByEmail($email)->getEmail() != NULL) {
             return false;
         } else {
             return true;
+
+
         }
     }
-
 }

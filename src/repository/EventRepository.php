@@ -1,84 +1,95 @@
-<?php 
+<?php
+
 namespace Mongosta\Repository;
-use \PDO;
+
 use Mongosta\Bootstrap\Database as db;
-use Mongosta\EventModel\EventModel as em;
+use Mongosta\Model\EventModel as Event;
 
 
+class EventRepository
+{
 
 
-class EventRepository{
-
-	
-static public function getAll(){
-  		$db = Db::getInstance();
-  	    $req = $db->query('SELECT * FROM sme_eventos');
-
-  	    foreach ($req as $event) {
-  	    	// falta crearlo bien
-  	    	$eventos[] = new User($event['nombre'],$event);
-  	    }
-  		return $nombres;
-      }
-
-
-  static public function findByNombre_sms($email){
-      $db = Db::getInstance();
-      $req = $db->prepare('SELECT * FROM sme_eventos WHERE nombre_sms= :nombre_sms');
-      $req->execute(array(':nombre_sms' => $nombre_sms));
-      $req = $req->fetch();
-
-      $event = new Event($req['nombre'],$req['usuario'],$req['contrasena'],
-      	              $req['email'],$req['telefono'],$req['dni']);
-        return $event;
-     }
-
-
-     static public function create($event){
-
-     	  $db = Db::getInstance();
-        $req = $db->prepare('INSERT INTO sme_eventos ( nombre, usuario, contrasena, email, 
-        												  telefono,dni) 
-        	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni);');
-        $req->execute(array(':nombre' => $event->getNombre(),
-                             ':usuario' => $event->getUsuario(),
-                              ':contrasena' => $event->getContrasena(),
-                              ':email' => $event->getEmail(),
-                              ':telefono' => $event->getTelefono(),
-                              ':dni' => $event->getDni()
-                           )
-                      );
-     }
-
-      public static function delete($event){
-           $db = Db::getInstance();
-           $nombre_sms = $event->getNombre_sms();
-           $req = $db->prepare('DELETE FROM sme_eventos WHERE nombre_sms = :nombre_sms');
-           $req->execute(array('nombre_sms' => $nombre_sms));
-      }
-
-      public function update($event){
+    static public function getAll()
+    {
         $db = Db::getInstance();
-        $req = $db->prepare('UPDATE sme_eventos SET nombre = :nombre, usuario = :usuario , 
-                             contrasena = :contrasena , email = :email , telefono = :telefono , 
-                             dni = :dni   WHERE nombre_sms= :nombre_sms;');
-       // falta hacerlo bien
-        $req->execute(array(':id' => $user->getId(),
-                            ':nombre' => $user->getNombre(),
-                            ':usuario' => $user->getUsuario(),
-                            ':contrasena' => $user->getContrasena(),
-                            ':email' => $user->getEmail(),
-                            ':telefono' => $user->getTelefono(),
-                            ':dni' => $user->getDni()                            
-                            )
-                      );
+        $req = $db->query('SELECT * FROM sme_eventos');
 
-      }
-
-        
+        foreach ($req as $action) {
+            // falta crearlo bien
+            $actions[] = new Event($action['ID'], $action['nombre'], $action['nombre_sms'], $action['imagen'], $action['lugar'], $action['fecha'], $action['mostrar_comprobar_pulsera'], $action['registro_previo'], $action['registro_email'], $action['registro_telefono'], $action['id_cliente'], $action['id_lugar_fb'], $action['facebook_pagina'], $action['url']);
+        }
+        return $actions;
+    }
 
 
+    static public function findByNombre_sms($nombre_sms)
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT * FROM sme_eventos WHERE nombre_sms= :nombre_sms');
+        $req->execute(array(':nombre_sms' => $nombre_sms));
+        $req = $req->fetch();
+        $action = new Event($req['ID'], $req['nombre'], $req['nombre_sms'], $req['imagen'], $req['lugar'], $req['fecha'], $req['mostrar_comprobar_pulsera'], $req['registro_previo'], $req['registro_email'], $req['registro_telefono'], $req['id_cliente'], $req['id_lugar_fb'], $req['facebook_pagina'], $req['url']);
+        return $action;
+    }
 
+
+    static public function create($action)
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare('INSERT INTO sme_eventos ( nombre, nombre_sms, imagen, lugar,fecha,mostrar_comprobar_pulsera,registro_previo,registro_email,registro_telefono,id_cliente,id_lugar_fb,facebook_pagina,url) 
+        	                    VALUES (:nombre, :nombre_sms, :imagen, :lugar,:fecha,
+                              :mostrar_comprobar_pulsera,:registro_previo,:registro_email,
+                              :registro_telefono,:id_cliente,:id_lugar_fb,:facebook_pagina,:url);');
+        $req->execute(array(':nombre' => $action->getNombre(),
+                ':nombre_sms' => $action->getNombre_sms(),
+                ':imagen' => $action->getImagen(),
+                ':lugar' => $action->getLugar(),
+                ':fecha' => $action->getFecha(),
+                ':mostrar_comprobar_pulsera' => $action->getMostrar_comprobar_pulsera(),
+                ':registro_previo' => $action->getRegistro_previo(),
+                ':registro_email' => $action->getRegistro_email(),
+                ':registro_telefono' => $action->getRegistro_telefono(),
+                ':id_cliente' => $action->getId_cliente(),
+                ':id_lugar_fb' => $action->getId_lugar_fb(),
+                ':facebook_pagina' => $action->getFacebook_pagina(),
+                ':url' => $action->getUrl()
+            )
+        );
+    }
+
+    public static function delete($action)
+    {
+        $db = Db::getInstance();
+        $nombre_sms = $action->getNombre_sms();
+        $req = $db->prepare('DELETE FROM sme_eventos WHERE nombre_sms = :nombre_sms');
+        $req->execute(array('nombre_sms' => $nombre_sms));
+    }
+
+    public static function update($action)
+    {
+        $db = Db::getInstance();
+        // falta preparlo
+        $req = $db->prepare('UPDATE sme_eventos SET nombre = :nombre, nombre_sms = :nombre_sms , 
+                             imagen = :imagen , lugar = :lugar , fecha = :fecha, 
+                             mostrar_comprobar_pulsera = :mostrar_comprobar_pulsera, registro_previo=:registro_previo,registro_email=:registro_email,registro_telefono=:registro_telefono,id_cliente=:id_cliente,id_lugar_fb=:id_lugar_fb,facebook_pagina=:facebook_pagina,url=:url  WHERE nombre_sms= :nombre_sms;');
+        $req->execute(array(':nombre' => $action->getNombre(),
+                ':nombre_sms' => $action->getNombre_sms(),
+                ':imagen' => $action->getImagen(),
+                ':lugar' => $action->getLugar(),
+                ':fecha' => $action->getFecha(),
+                ':mostrar_comprobar_pulsera' => $action->getMostrar_comprobar_pulsera(),
+                ':registro_previo' => $action->getRegistro_previo(),
+                ':registro_email' => $action->getRegistro_email(),
+                ':registro_telefono' => $action->getRegistro_telefono(),
+                ':id_cliente' => $action->getId_cliente(),
+                ':id_lugar_fb' => $action->getId_lugar_fb(),
+                ':facebook_pagina' => $action->getFacebook_pagina(),
+                ':url' => $action->getUrl()
+            )
+        );
+
+    }
 }
 
 
