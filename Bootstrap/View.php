@@ -11,7 +11,7 @@ class View
 		$this->attributes = $attributes;
     }
 
-    public function render(string $template, array $data = [])
+    public function render($template, array $data = [])
  	{
 		$data = array_merge($this->attributes, $data);
 		$templateFile = $this->templatePath . $template;

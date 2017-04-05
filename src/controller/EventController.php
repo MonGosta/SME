@@ -1,12 +1,14 @@
 <?php
+
 namespace Mongosta\Controller;
 
-use Mongosta\Repository\EventRepository as Repo;
-use Mongosta\Bootstrap\View ;
+use Mongosta\Bootstrap\View;
 use Mongosta\Model\EventModel as Event;
+use Mongosta\Repository\EventRepository as Repo;
 
 class EventController
 {
+<<<<<<< HEAD
 	function index(){
 		$nombres = Repo::getAll();
 		$view = new View("src/views/event");
@@ -54,5 +56,45 @@ class EventController
 		$event  = new Event();
 	    $view = new View("src/views/event");
 		$view->render('delete.php', ['event' => $event]);
+=======
+    function index()
+    {
+        $nombres = Repo::getAll();
+        $view = new View("src/views/client");
+        $view->render('index.php', ['nombres' => $nombres]);
+    }
+
+
+    function register()
+    {
+
+        if (isset($_POST['nombre'])) {
+            $event = new Event ($_POST['nombre'],
+                $_POST['email'],
+                $_POST['telefono']
+            );
+            $event->save();
+        } else {
+            $event = new Event();
+        }
+        $view = new View("src/views/client");
+        $view->render('register.php', ['client' => $client]);
+
+
+    }
+
+    function delete()
+    {
+
+        if (isset($_POST['email'])) {
+            $email = $_POST['email'];
+            $client = new Client();
+            $client = Repo::findByEmail($email);
+            $client->delete();
+        }
+        $client = new Client();
+        $view = new View("src/views/client");
+        $view->render('delete.php', ['client' => $client]);
+>>>>>>> d07e3a92c30e788eea6a9cecea6a81f9cdddd4ea
     }
 }
