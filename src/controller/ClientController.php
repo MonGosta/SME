@@ -15,11 +15,6 @@ class ClientController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-    function show()
-    {
-        $user = Repo::findByEmail(1);
-    }
-
 
     function register()
     {
@@ -44,7 +39,6 @@ class ClientController
 
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
-            $client = new Client();
             $client = Repo::findByEmail($email);
             $client->delete();
         }

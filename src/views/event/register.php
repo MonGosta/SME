@@ -3,7 +3,7 @@
     <input type="" name="nombre" value="<?= $event->getNombre(); ?>">
     <br>
     <label for="nombre_sms">Nombre_sms: </label>
-    <input type="" name="nombre_sms" value="<?=$event->getNombre_sms(); ?>">
+    <input type="" name="nombre_sms" value="<?= $event->getNombre_sms(); ?>">
     <br>
     <label for="imagen">Imagen: </label>
     <input type="" name="imagen" value="<?= $event->getImagen(); ?>">

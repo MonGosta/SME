@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Prueba</title>
+    <title>Prueba</title>
 </head>
 <body>
 <?php
 
 foreach ($datos as $dato) {
-	echo $dato;
-	echo "<br>";
+    echo $dato;
+    echo "<br>";
 }
 
 
