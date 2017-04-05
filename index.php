@@ -5,6 +5,8 @@ use Mongosta\Bootstrap\Config;
 use Mongosta\Bootstrap\Database;
 use Mongosta\Controller\UserController;
 use Mongosta\Controller\ClientController;
+use Mongosta\Controller\EventController;
+use Mongosta\Controller\ActionController;
 
 
 $request = new Request();
@@ -27,7 +29,12 @@ if($request->getParam('action')!=NULL){
 // intanciamos el controlador
 $controller = new $controller;
 // y llamamos a la "acción"/método pasando el id si lo hay
-$controller->$action($request->getParam('id'));
+if($request->hasParam('id')){
+	$controller->$action($request->getParam('id'));
+}else{
+	$controller->$action();
+}
+
 
 
 

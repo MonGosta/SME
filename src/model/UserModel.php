@@ -127,7 +127,7 @@ class UserModel
         //var_dump($this);
         UserRepo::delete($this);
     }
-<<<<<<< HEAD
+
     private function isValid($email){
       $hola = UserRepo::findByEmail($email)->getEmail();
       var_dump($hola);
@@ -135,16 +135,8 @@ class UserModel
           return false;        
         }else{
           return true;
-=======
 
-    private function isValid($email)
-    {
-        if (UserRepo::findByEmail($email)->getEmail() != NULL) {
-            return false;
-        } else {
-            return true;
->>>>>>> d07e3a92c30e788eea6a9cecea6a81f9cdddd4ea
+
         }
     }
-
 }
