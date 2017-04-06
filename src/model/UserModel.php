@@ -14,10 +14,10 @@ class UserModel
     private $email;
     private $telefono;
     private $dni;
-    private $id_ciente;
+    private $id_cliente;
 
     public function __construct($nombre = "", $usuario = "", $contrasena = "",
-                                $email = "", $telefono = "", $dni = "", $id_ciente = "", $id = null)
+                                $email = "", $telefono = "", $dni = "", $id_cliente = "", $id = null)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -26,7 +26,7 @@ class UserModel
         $this->email = $email;
         $this->telefono = $telefono;
         $this->dni = $dni;
-        $this->id_ciente = $id_ciente;
+        $this->id_cliente = $id_cliente;
     }
 
 
@@ -101,14 +101,14 @@ class UserModel
     }
 
 
-    public function getId_ciente()
+    public function getId_cliente()
     {
-        return $this->id_ciente;
+        return $this->id_cliente;
     }
 
-    public function setId_ciente($id_ciente)
+    public function setId_cliente($id_cliente)
     {
-        $this->id_ciente = $id_ciente;
+        $this->id_cliente = $id_cliente;
     }
 
     public function save()
@@ -131,7 +131,7 @@ class UserModel
     private function isValid($email)
     {
         $hola = UserRepo::findByEmail($email)->getEmail();
-        var_dump($hola);
+        //var_dump($hola);
         if (UserRepo::findByEmail($email)->getEmail() != NULL) {
             return false;
         } else {
