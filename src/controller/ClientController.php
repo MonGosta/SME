@@ -4,6 +4,7 @@ namespace Mongosta\Controller;
 
 use Mongosta\Bootstrap\View;
 use Mongosta\Model\ClientModel as Client;
+use Mongosta\Model\UserModel as User;
 use Mongosta\Repository\ClientRepository as Repo;
 
 class ClientController
@@ -15,26 +16,37 @@ class ClientController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-    function show()
-    {
-        $user = Repo::findByEmail(1);
-    }
-
-
     function register()
     {
+         
 
         if (isset($_POST['nombre'])) {
+            var_dump(1);
             $client = new Client ($_POST['nombre'],
                 $_POST['email'],
                 $_POST['telefono']
             );
             $client->save();
+            $client = Repo::findByEmail($client->getEmail());
+            var_dump($client->getId());
+           if (isset($_POST['nombre_usuario'])) {
+            
+            $user = new User ($_POST['nombre_usuario'],
+                $_POST['usuario'],
+                $_POST['contrasena'],
+                $_POST['email_usuario'],
+                $_POST['telefono_usuario'],
+                $_POST['dni'],
+                $client->getId()
+            );
+            $user->save();
+            }
         } else {
             $client = new Client();
+            $user = new User();
         }
         $view = new View("src/views/client");
-        $view->render('register.php', ['client' => $client]);
+        $view->render('register.php', ['client' => $client , 'user' =>$user]);
 
 
     }

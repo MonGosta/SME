@@ -31,6 +31,18 @@ static public function getAll(){
         return $action;
      }
 
+       static public function findById_cliente($id_cliente){
+      $db = Db::getInstance();
+      $req = $db->prepare('SELECT * FROM sme_eventos WHERE id_cliente= :id_cliente');
+      $req->execute(array(':id_cliente' => $id_cliente));
+      $req = $req->fetch();  
+      $event = new Event($req['ID'],$req['nombre'],$req['nombre_sms'],$req['imagen'],$req['lugar'],$req['fecha'],$req['mostrar_comprobar_pulsera'],$req['registro_previo'],$req['registro_email'],$req['registro_telefono'],$req['id_cliente'],$req['id_lugar_fb'],$req['facebook_pagina'],$req['url']);
+        return $event;
+     }
+
+
+
+
 
      static public function create($action){
      	  $db = Db::getInstance();

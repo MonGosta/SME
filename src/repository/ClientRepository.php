@@ -11,8 +11,8 @@ class ClientRepository{
     $db = Db::getInstance();
     $req = $db->query('SELECT * FROM sme_clientes');
     foreach ($req as $cliente) {
-        $clientes[] = new Client($cliente['ID'],$cliente['nombre'],$cliente['email'], 
-                                $cliente['telefono']);
+        $clientes[] = new Client($cliente['nombre'],$cliente['email'], 
+                                $cliente['telefono'],$cliente['ID']);
     }
     return $clientes;
   }
@@ -22,6 +22,16 @@ class ClientRepository{
     $db = Db::getInstance();
     $req = $db->prepare('SELECT * FROM sme_clientes WHERE email= :email');
     $req->execute(array(':email' => $email));
+    $req = $req->fetch();
+    $client = new Client($req['nombre'], $req['email'], $req['telefono'], $req['ID']); 
+    return $client;
+ }
+
+  static public function findById($id){
+
+    $db = Db::getInstance();
+    $req = $db->prepare('SELECT * FROM sme_clientes WHERE ID = :id');
+    $req->execute(array(':id' => $id));
     $req = $req->fetch();
     $client = new Client($req['nombre'], $req['email'], $req['telefono'], $req['ID']); 
     return $client;
@@ -52,8 +62,7 @@ class ClientRepository{
     $req->execute(array(':id' => $client->getId(),
                         ':nombre' => $client->getNombre(),
                         ':email' => $client->getEmail(),
-                        ':telefono' => $client->getTelefono(),
-                        ':id' => $client->getId()
+                        ':telefono' => $client->getTelefono()
                         )
                   );
 

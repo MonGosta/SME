@@ -5,6 +5,8 @@ namespace Mongosta\Controller;
 use Mongosta\Bootstrap\View;
 use Mongosta\Model\UserModel as User;
 use Mongosta\Repository\UserRepository as Repo;
+use Mongosta\Repository\ClientRepository as Client_repo;
+use Mongosta\Repository\EventRepository as Event_repo;
 
 class UserController
 {
@@ -45,7 +47,6 @@ class UserController
 
     function delete()
     {
-
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
             var_dump($email);
@@ -58,6 +59,35 @@ class UserController
         }
         $view = new View("src/views/user");
         $view->render('delete.php', ['user' => $user]);
+    }
+
+     function login(){
+        $view = new View("src/views/user");
+        if (isset($_POST['email'])) {
+            $email = $_POST['email'];
+            $contrasena = $_POST['contrasena'];
+            $user = Repo::findByEmail($email);
+            $valid = $user->isValid($user->getEmail());
+            if($valid){
+                echo "usuario incorrecto";
+                $user = new User();              
+                $view->render('login.php', ['user' => $user]);
+            }else{
+                if($user->getId_cliente()==1){
+                       $clients = Client_repo::getAll();
+                       $events = Event_repo::findById_cliente($user->getId_cliente());
+                       $view->render('welcome_casfid.php', ['user' => $user,'clients' => $clients, 'events' => $events]);
+                }else{
+                $new_password = password_hash($contrasena,PASSWORD_DEFAULT);       
+                $client = Client_repo::findById($user->getId_cliente());
+                $event = Event_repo::findById_cliente($client->getId());
+                $view->render('welcome.php', ['user' => $user,'client' => $client , 'event' =>$event]);
+                }
+            }
+        }else{
+                $user = new User();
+                $view->render('login.php', ['user' => $user]);
+        }    
     }
 }
 

@@ -26,7 +26,7 @@ class UserRepository{
       $req = $req->fetch();
 
       $user = new User($req['nombre'],$req['usuario'],$req['contrasena'],
-      	              $req['email'],$req['telefono'],$req['dni']);
+      	              $req['email'],$req['telefono'],$req['dni'],$req['id_cliente']);
         return $user;
      }
 
@@ -34,14 +34,15 @@ class UserRepository{
 
      	  $db = Db::getInstance();
         $req = $db->prepare('INSERT INTO sme_usuarios ( nombre, usuario, contrasena, email, 
-        												  telefono,dni) 
-        	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni);');
+        												  telefono,dni,id_cliente) 
+        	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni,:id_cliente);');
         $req->execute(array(':nombre' => $user->getNombre(),
                              ':usuario' => $user->getUsuario(),
                               ':contrasena' => $user->getContrasena(),
                               ':email' => $user->getEmail(),
                               ':telefono' => $user->getTelefono(),
-                              ':dni' => $user->getDni()
+                              ':dni' => $user->getDni(),
+                              ':id_cliente' => $user->getId_cliente()
                            )
                       );
 

@@ -59,7 +59,7 @@ class ActionRepository{
       }
 
 
-      public function update($action){
+      public static function update($action){
         $db = Db::getInstance();
         $req = $db->prepare('UPDATE sme_acciones SET nombre = :nombre, texto = :texto , 
                              modo_foto = :modo_foto , registro_en_accion = :registro_en_accion , texto_personalizado = :texto_personalizado,sin_foto = :sin_foto , etiquetado_multiple = :etiquetado_multiple , id_evento = :id_evento , overlay_margin_x = :overlay_margin_x , overlay_margin_y = :overlay_margin_y WHERE nombre = :nombre;');

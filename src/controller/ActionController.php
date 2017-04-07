@@ -54,4 +54,6 @@ class ActionController
         $view = new View("src/views/action");
         $view->render('delete.php', ['action' => $action]);
     }
+
+    
 }
