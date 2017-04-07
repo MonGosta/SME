@@ -1,5 +1,7 @@
 <?php
+
 namespace Mongosta\Model;
+
 use Mongosta\Repository\ActionRepository as ActionRepo;
 
 class ActionModel
@@ -17,12 +19,12 @@ class ActionModel
     private $overlay_margin_x;
     private $overlay_margin_y;
 
-    public function __construct( $nombre = "",$texto = "", $modo_foto = "", $registro_en_accion = "", $texto_personalizado = "", $sin_foto = "", $etiquetado_multiple = "", $id_evento = "", $overlay_url = "", $overlay_margin_x = "", $overlay_margin_y = "",$id = null)
+    public function __construct($nombre = "", $texto = "", $modo_foto = "", $registro_en_accion = "", $texto_personalizado = "", $sin_foto = "", $etiquetado_multiple = "", $id_evento = "", $overlay_url = "", $overlay_margin_x = "", $overlay_margin_y = "", $id = null)
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->texto = $texto;
-        $this->modo_foto = $modo_foto;     
+        $this->modo_foto = $modo_foto;
         $this->registro_en_accion = $registro_en_accion;
         $this->texto_personalizado = $texto_personalizado;
         $this->sin_foto = $sin_foto;
@@ -37,6 +39,7 @@ class ActionModel
     {
         return $this->id;
     }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -46,6 +49,7 @@ class ActionModel
     {
         return $this->nombre;
     }
+
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
@@ -55,6 +59,7 @@ class ActionModel
     {
         return $this->texto;
     }
+
     public function setTexto($texto)
     {
         $this->texto = $texto;
@@ -64,6 +69,7 @@ class ActionModel
     {
         return $this->modo_foto;
     }
+
     public function setModo_foto($modo_foto)
     {
         $this->modo_foto = $modo_foto;
@@ -73,6 +79,7 @@ class ActionModel
     {
         return $this->registro_en_accion;
     }
+
     public function setRegistro_en_accion($registro_en_accion)
     {
         $this->registro_en_accion = $registro_en_accion;
@@ -82,6 +89,7 @@ class ActionModel
     {
         return $this->texto_personalizado;
     }
+
     public function setTexto_personalizado($texto_personalizado)
     {
         $this->texto_personalizado = $texto_personalizado;
@@ -91,6 +99,7 @@ class ActionModel
     {
         return $this->sin_foto;
     }
+
     public function setSin_foto($sin_foto)
     {
         $this->sin_foto = $sin_foto;
@@ -100,6 +109,7 @@ class ActionModel
     {
         return $this->etiquetado_multiple;
     }
+
     public function setEtiquetado_multiple($etiquetado_multiple)
     {
         $this->etiquetado_multiple = $etiquetado_multiple;
@@ -109,6 +119,7 @@ class ActionModel
     {
         return $this->id_evento;
     }
+
     public function setId_evento($id_evento)
     {
         $this->id_evento = $id_evento;
@@ -118,6 +129,7 @@ class ActionModel
     {
         return $this->overlay_url;
     }
+
     public function setOverlay_url($overlay_url)
     {
         $this->overlay_url = $overlay_url;
@@ -127,6 +139,7 @@ class ActionModel
     {
         return $this->overlay_margin_x;
     }
+
     public function setOverlay_margin_x($overlay_margin_x)
     {
         $this->overlay_margin_x = $overlay_margin_x;
@@ -136,6 +149,7 @@ class ActionModel
     {
         return $this->overlay_margin_y;
     }
+
     public function setOverlay_margin_y($overlay_margin_y)
     {
         $this->overlay_margin_y = $overlay_margin_y;
@@ -158,18 +172,19 @@ class ActionModel
         ActionRepo::delete($this);
     }
 
-    private function isValid($nombre){
+    private function isValid($nombre)
+    {
 
-        if(ActionRepo::findByNombre($nombre)->getNombre()!= NULL){
-          return false;        
-        }else{
-          return true;
+        if (ActionRepo::findByNombre($nombre)->getNombre() != NULL) {
+            return false;
+        } else {
+            return true;
 
 
         }
     }
 
- 
+
 }
 
 ?>

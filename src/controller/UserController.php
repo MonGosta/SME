@@ -26,7 +26,7 @@ class UserController
     function register()
     {
         if (isset($_POST['nombre'])) {
-            
+
             $user = new User ($_POST['nombre'],
                 $_POST['usuario'],
                 $_POST['contrasena'],

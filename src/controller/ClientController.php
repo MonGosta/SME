@@ -16,6 +16,10 @@ class ClientController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
     function register()
     {
          
@@ -56,7 +60,6 @@ class ClientController
 
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
-            $client = new Client();
             $client = Repo::findByEmail($email);
             $client->delete();
         }
