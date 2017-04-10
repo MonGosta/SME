@@ -16,13 +16,9 @@ class ClientController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
     function register()
     {
-         
+
 
         if (isset($_POST['nombre'])) {
             var_dump(1);
@@ -34,7 +30,7 @@ class ClientController
             $client = Repo::findByEmail($client->getEmail());
             var_dump($client->getId());
            if (isset($_POST['nombre_usuario'])) {
-            
+
             $user = new User ($_POST['nombre_usuario'],
                 $_POST['usuario'],
                 $_POST['contrasena'],

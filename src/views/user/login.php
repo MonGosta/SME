@@ -32,83 +32,83 @@
 </head>
 <body class="page-body login-page">
 
-	
+
 	<div class="login-container">
-	
+
 		<div class="row">
-	
+
 			<div class="col-sm-6">
-	
+
 				<script type="text/javascript">
 					jQuery(document).ready(function($)
 					{
 						// Reveal Login form
 						setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
-	
-	
-						
-	
+
+
+
+
 						// Set Form focus
 						$("form#login .form-group:has(.form-control):first .form-control").focus();
 					});
 				</script>
-	
+
 				<!-- Errors container -->
 				<div class="errors-container">
-	
-					
+
+
 				</div>
-	
+
 				<!-- Add class "fade-in-effect" for login form effect -->
 				<form method="post" role="form" id="login" class="login-form fade-in-effect">
-	
+
 					<div class="login-header">
 						<a href="dashboard-1.html" class="logo">
 							<img src="../public/images/logoCasfid2.png" alt="" width="80" />
 						</a>
 					</div>
-					
+
 						<h3>Login</h3>
 						<br>
-						
+
 					<div class="form-group">
-						
+
 						<input type="text" class="form-control input-dark" name="email" id="email" autocomplete="off" value="<?=$user->getEmail(); ?>" placeholder="Email"/>
 					</div>
-	
+
 					<div class="form-group">
 						<input type="password" class="form-control input-dark" name="contrasena" id="contrasena" autocomplete="off" value="<?=$user->getContrasena(); ?>" placeholder="Contraseña"/>
 					</div>
-					
-	
+
+
 					<div class="form-group">
 						<button type="submit" class="btn btn-dark  btn-block text-left">
 							<i class="fa-lock"></i>
 							Log In
 						</button>
 					</div>
-					
+
 					<p>
     					<input type="checkbox" name="remember" id="remember">
    						<label for="remember">Remember me for 15 days</label>
   					</p>
-	
+
 					<div class="login-footer">
 						<a href="#">Forgot your password?</a>
-	
+
 						<div class="info-links">
 							<a href="#">ToS</a> -
 							<a href="#">Privacy Policy</a>
 						</div>
-	
+
 					</div>
-	
+
 				</form>
 
 				</div>
-	
+
 			</div>
-	
+
 		</div>
 
 

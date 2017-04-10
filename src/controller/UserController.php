@@ -17,7 +17,7 @@ class UserController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-  
+
 
     function register()
     {
@@ -68,7 +68,7 @@ class UserController
             $pass_bbdd = $user->getContrasena();
             if($valid){
                 echo "usuario incorrecto";
-                $user = new User();              
+                $user = new User();
                 $view->render('login.php', ['user' => $user]);
             }else{
                 if(password_verify($contrasena, $pass_bbdd)){
@@ -79,16 +79,17 @@ class UserController
                         }else{
                         $client = Client_repo::findById($user->getId_cliente());
                         $event = Event_repo::findById_cliente($client->getId());
-                        $view->render('welcome.php', ['user' => $user,'client' => $client , 'event' =>$event]);
+                        $view->render('../blank-welcome.php', ['user' => $user,'client' => $client , 'event' =>$event]);
                         }
                 }else{
                     echo "Password incorrecto";
+                    $view->render('login.php', ['user' => $user]);
                 }
             }
         }else{
                 $user = new User();
                 $view->render('login.php', ['user' => $user]);
-        }    
+        }
     }
 }
 
