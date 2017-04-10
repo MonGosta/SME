@@ -21,11 +21,8 @@ class EventModel
     private $facebook_pagina;
     private $url;
 
-<<<<<<< HEAD
     public function __construct($id = null, $nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "")
-=======
-    public function __construct($nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "", $id = null)
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
+
     {
         $this->id = $id;
         $this->nombre = $nombre;

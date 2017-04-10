@@ -16,13 +16,10 @@ class UserModel
     private $dni;
     private $id_cliente;
 
-<<<<<<< HEAD
+
     public function __construct( $nombre = "", $usuario = "", $contrasena = "",
                                 $email = "", $telefono = "", $dni = "", $id_cliente = "",$id = null)
-=======
-    public function __construct($nombre = "", $usuario = "", $contrasena = "",
-                                $email = "", $telefono = "", $dni = "", $id_cliente = "", $id = null)
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
+
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -111,11 +108,9 @@ class UserModel
         return $this->id_cliente;
     }
 
-<<<<<<< HEAD
+
     public function setId_cliente($id_ciente)
-=======
-    public function setId_cliente($id_cliente)
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
+
     {
         $this->id_cliente = $id_cliente;
     }
@@ -137,25 +132,14 @@ class UserModel
         UserRepo::delete($this);
     }
 
-<<<<<<< HEAD
+
     public function isValid($email){
       $hola = UserRepo::findByEmail($email)->getEmail();
         if(UserRepo::findByEmail($email)->getEmail()!= NULL){
           return false;        
         }else{
           return true;
-=======
-    private function isValid($email)
-    {
-        $hola = UserRepo::findByEmail($email)->getEmail();
-        //var_dump($hola);
-        if (UserRepo::findByEmail($email)->getEmail() != NULL) {
-            return false;
-        } else {
-            return true;
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
-
-
-        }
+         }
     }
+
 }

@@ -8,14 +8,7 @@ use Mongosta\Model\ClientModel as Client;
 class ClientRepository
 {
 
-<<<<<<< HEAD
-  static public function getAll(){
-    $db = Db::getInstance();
-    $req = $db->query('SELECT * FROM sme_clientes');
-    foreach ($req as $cliente) {
-        $clientes[] = new Client($cliente['nombre'],$cliente['email'], 
-                                $cliente['telefono'],$cliente['ID']);
-=======
+
     static public function getAll()
     {
         $db = Db::getInstance();
@@ -25,7 +18,7 @@ class ClientRepository
                 $cliente['telefono']);
         }
         return $clientes;
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
+
     }
 
     static public function findByEmail($email)
@@ -39,7 +32,7 @@ class ClientRepository
         return $client;
     }
 
-<<<<<<< HEAD
+
   static public function findById($id){
 
     $db = Db::getInstance();
@@ -53,12 +46,6 @@ class ClientRepository
  static public function create($client){
     $db = Db::getInstance();
     $req = $db->prepare('INSERT INTO sme_clientes (nombre, email, telefono) 
-=======
-    static public function create($client)
-    {
-        $db = Db::getInstance();
-        $req = $db->prepare('INSERT INTO sme_clientes (nombre, email, telefono) 
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
       VALUES (:nombre, :email, :telefono);');
         $req->execute(array(':nombre' => $client->getNombre(), ':email' => $client->getEmail(),
                 ':telefono' => $client->getTelefono())
@@ -75,24 +62,11 @@ class ClientRepository
     }
 
 
-<<<<<<< HEAD
-  public function update($client){
-    $db = Db::getInstance();
-    $req = $db->prepare('UPDATE sme_clientes SET nombre = :nombre, email = :email , telefono = :telefono ,id = :id  WHERE email = :email;');
-   
-    $req->execute(array(':id' => $client->getId(),
-                        ':nombre' => $client->getNombre(),
-                        ':email' => $client->getEmail(),
-                        ':telefono' => $client->getTelefono()
-                        )
-                  );
-=======
+
     public function update($client)
     {
         $db = Db::getInstance();
         $req = $db->prepare('UPDATE sme_clientes SET nombre = :nombre, email = :email , telefono = :telefono ,id = :id  WHERE email = :email;');
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
-
         $req->execute(array(':id' => $client->getId(),
                 ':nombre' => $client->getNombre(),
                 ':email' => $client->getEmail(),

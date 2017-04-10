@@ -17,11 +17,7 @@ class UserController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-    function show()
-    {
-        $user = Repo::findByEmail(1);
-    }
-
+  
 
     function register()
     {
@@ -66,22 +62,27 @@ class UserController
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
             $contrasena = $_POST['contrasena'];
+            $pass =  password_hash($contrasena, PASSWORD_DEFAULT);
             $user = Repo::findByEmail($email);
             $valid = $user->isValid($user->getEmail());
+            $pass_bbdd = $user->getContrasena();
             if($valid){
                 echo "usuario incorrecto";
                 $user = new User();              
                 $view->render('login.php', ['user' => $user]);
             }else{
-                if($user->getId_cliente()==1){
-                       $clients = Client_repo::getAll();
-                       $events = Event_repo::findById_cliente($user->getId_cliente());
-                       $view->render('welcome_casfid.php', ['user' => $user,'clients' => $clients, 'events' => $events]);
+                if(password_verify($contrasena, $pass_bbdd)){
+                        if($user->getId_cliente()==1){
+                               $clients = Client_repo::getAll();
+                               $events = Event_repo::findById_cliente($user->getId_cliente());
+                               $view->render('welcome_casfid.php', ['user' => $user,'clients' => $clients, 'events' => $events]);
+                        }else{
+                        $client = Client_repo::findById($user->getId_cliente());
+                        $event = Event_repo::findById_cliente($client->getId());
+                        $view->render('welcome.php', ['user' => $user,'client' => $client , 'event' =>$event]);
+                        }
                 }else{
-                $new_password = password_hash($contrasena,PASSWORD_DEFAULT);       
-                $client = Client_repo::findById($user->getId_cliente());
-                $event = Event_repo::findById_cliente($client->getId());
-                $view->render('welcome.php', ['user' => $user,'client' => $client , 'event' =>$event]);
+                    echo "Password incorrecto";
                 }
             }
         }else{

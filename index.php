@@ -11,7 +11,7 @@ use Mongosta\Controller\ActionController;
 
 $request = new Request();
 // obtenemos el parámetro o asignamos un valor por defecto
-if($request->getParam('controller') != NULL){
+if($request->hasParam('controller') != NULL){
 	$controller = $request->getParam('controller');
 }else{
 	$controller = 'User';
@@ -21,7 +21,7 @@ $controller = ucfirst($controller) . 'Controller';
 $controller = 'Mongosta\\Controller\\'. $controller;
 // obtenemos el parámetro o asignamos un valor por defecto
 
-if($request->getParam('action')!=NULL){
+if($request->hasParam('action')!=NULL){
 	$action = $request->getParam('action');
 }else{
 	$action = 'index';
