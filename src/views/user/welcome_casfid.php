@@ -8,7 +8,8 @@
 	<?php 
 	foreach ($clients as $client) {
 
-		?>
+		?> 
+		<a href="/Mongosta/client/show/<?=$client->getId();?>">
          <li><?= $client->getNombre(); ?> </li>
    <?php      
 	}
@@ -18,16 +19,5 @@
 </ul>
 
 
-<ul>
-	<?php 
-	foreach ($events as $event) {
 
-		?>
-         <li><?= $event->getNombre(); ?> </li>
-   <?php      
-	}
-	
-    ?>
-
-</ul>
 <a href="/Mongosta/client/register"> <button> Nuevo Cliente </button> </a>

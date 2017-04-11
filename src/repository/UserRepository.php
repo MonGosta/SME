@@ -18,7 +18,7 @@ class UserRepository
         foreach ($req as $usuario) {
             $nombres[] = new User($usuario['nombre'], $usuario['usuario'], $usuario['contrasena'],
                 $usuario['email'], $usuario['telefono'], $usuario['dni'],
-                $usuario['id_cliente']);
+                $usuario['id_cliente'],$usuario['ID']);
         }
         return $nombres;
     }
@@ -29,9 +29,8 @@ class UserRepository
         $req = $db->prepare('SELECT * FROM sme_usuarios WHERE email= :email');
         $req->execute(array(':email' => $email));
         $req = $req->fetch();
-
         $user = new User($req['nombre'], $req['usuario'], $req['contrasena'],
-            $req['email'], $req['telefono'], $req['dni']);
+            $req['email'], $req['telefono'], $req['dni'] ,$req['id_cliente'],$req['ID']);
         return $user;
     }
 
@@ -43,7 +42,6 @@ class UserRepository
         												  telefono,dni,id_cliente) 
         	                    VALUES (:nombre, :usuario, :contrasena, :email, :telefono, :dni,:id_cliente);');
         $req->execute(array(':nombre' => $user->getNombre(),
-
                              ':usuario' => $user->getUsuario(),
                               ':contrasena' => password_hash($user->getContrasena(), PASSWORD_DEFAULT),
                               ':email' => $user->getEmail(),

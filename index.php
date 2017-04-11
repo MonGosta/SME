@@ -24,7 +24,7 @@ $controller = 'Mongosta\\Controller\\'. $controller;
 if($request->hasParam('action')!=NULL){
 	$action = $request->getParam('action');
 }else{
-	$action = 'index';
+	$action = 'login';
 }
 // intanciamos el controlador
 $controller = new $controller;

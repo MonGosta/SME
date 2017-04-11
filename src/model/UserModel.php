@@ -29,6 +29,7 @@ class UserModel
         $this->telefono = $telefono;
         $this->dni = $dni;
         $this->id_cliente = $id_cliente;
+        
     }
 
 
@@ -134,7 +135,6 @@ class UserModel
 
 
     public function isValid($email){
-      $hola = UserRepo::findByEmail($email)->getEmail();
         if(UserRepo::findByEmail($email)->getEmail()!= NULL){
           return false;        
         }else{

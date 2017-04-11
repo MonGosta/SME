@@ -5,22 +5,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Xenon Boostrap Admin Panel" />
-	<meta name="author" content="" />
+	<meta name="description" content="" />
+	<meta name="author" content="Mongosta" />
 
 	<title>Xenon - Login</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
-	<link rel="stylesheet" href="../public/css/fonts/linecons/css/linecons.css">
-	<link rel="stylesheet" href="../public/css/fonts/fontawesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../public/css/bootstrap.css">
-	<link rel="stylesheet" href="../public/css/xenon-core.css">
-	<link rel="stylesheet" href="../public/css/xenon-forms.css">
-	<link rel="stylesheet" href="../public/css/xenon-components.css">
-	<link rel="stylesheet" href="../public/css/xenon-skins.css">
-	<link rel="stylesheet" href="../public/css/custom.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/bootstrap.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/xenon-core.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/xenon-forms.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/xenon-components.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/xenon-skins.css">
+	<link rel="stylesheet" href="/Mongosta/public/css/custom.css">
 
-	<script src="../public/js/jquery-1.11.1.min.js"></script>
+	<script src="/Mongosta/public/js/jquery-1.11.1.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -63,9 +63,7 @@
 				<form method="post" role="form" id="login" class="login-form fade-in-effect">
 	
 					<div class="login-header">
-						<a href="dashboard-1.html" class="logo">
-							<img src="../public/images/logoCasfid2.png" alt="" width="80" />
-						</a>
+							<img src="/Mongosta/public/images/logoCasfid2.png" alt="" width="80" />
 					</div>
 					
 						<h3>Login</h3>
@@ -87,19 +85,8 @@
 							Log In
 						</button>
 					</div>
-					
-					<p>
-    					<input type="checkbox" name="remember" id="remember">
-   						<label for="remember">Remember me for 15 days</label>
-  					</p>
-	
 					<div class="login-footer">
-						<a href="#">Forgot your password?</a>
-	
-						<div class="info-links">
-							<a href="#">ToS</a> -
-							<a href="#">Privacy Policy</a>
-						</div>
+				
 	
 					</div>
 	
@@ -114,18 +101,18 @@
 
 
 	<!-- Bottom Scripts -->
-	<script src="../public/js/bootstrap.min.js"></script>
-	<script src="../public/js/TweenMax.min.js"></script>
-	<script src="../public/js/resizeable.js"></script>
-	<script src="../public/js/joinable.js"></script>
-	<script src="../public/js/xenon-api.js"></script>
-	<script src="../public/js/xenon-toggles.js"></script>
-	<script src="../public/js/jquery-validate/jquery.validate.min.js"></script>
-	<script src="../public/js/toastr/toastr.min.js"></script>
+	<script src="/Mongosta/public/js/bootstrap.min.js"></script>
+	<script src="/Mongosta/public/js/TweenMax.min.js"></script>
+	<script src="/Mongosta/public/js/resizeable.js"></script>
+	<script src="/Mongosta/public/js/joinable.js"></script>
+	<script src="/Mongosta/public/js/xenon-api.js"></script>
+	<script src="/Mongosta/public/js/xenon-toggles.js"></script>
+	<script src="/Mongosta/public/js/jquery-validate/jquery.validate.min.js"></script>
+	<script src="/Mongosta/public/js/toastr/toastr.min.js"></script>
 
 
 	<!-- JavaScripts initializations and stuff -->
-	<script src="../public/js/xenon-custom.js"></script>
+	<script src="Mongosta/public/js/xenon-custom.js"></script>
 
 </body>
 </html>

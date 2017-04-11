@@ -21,7 +21,7 @@ class EventModel
     private $facebook_pagina;
     private $url;
 
-    public function __construct($id = null, $nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "")
+    public function __construct( $nombre = "", $nombre_sms = "", $imagen = "", $lugar = "", $fecha = "", $mostrar_comprobar_pulsera = "", $registro_previo = "", $registro_email = "", $registro_telefono = "", $id_cliente = "", $id_lugar_fb = "", $facebook_pagina = "", $url = "",$id = null)
 
     {
         $this->id = $id;
@@ -187,6 +187,8 @@ class EventModel
             // comporbaciones si hacen falta
             EventRepo::create($this);
         } else {
+
+            echo "hola";
             EventRepo::update($this);
         }
     }

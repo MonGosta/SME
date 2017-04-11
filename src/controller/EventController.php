@@ -17,7 +17,7 @@ class EventController
     }
 
 
-    function register()
+    function register($id_cliente)
     {
 
         if (isset($_POST['nombre_sms'])) {
@@ -29,7 +29,8 @@ class EventController
                 $_POST['mostrar_comprobar_pulsera'],
                 $_POST['registro_previo'],
                 $_POST['registro_email'],
-                $_POST['registro_telefono']
+                $_POST['registro_telefono'],
+                $id_cliente
             /*$_POST['id_cliente'],
             $_POST['id_lugar_fb'],
             $_POST['facebook_pagina'],
@@ -59,6 +60,18 @@ class EventController
         $view = new View("src/views/event");
         $view->render('delete.php', ['event' => $event]);
     }
+    
 
+    function show($nombre_sms){
+        $event = Repo::findByNombre_sms($nombre_sms);
+        $view = new View("src/views/event");
+        $view->render('index.php', ['event' => $event]);
+    }
+
+    function update($nombre_sms){
+        $event = Repo::findByNombre_sms($nombre_sms);
+        $view = new View("src/views/event");
+        $view->render('register.php', ['event' => $event]);
+    }
 
 }

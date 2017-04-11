@@ -14,8 +14,8 @@ class ClientRepository
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM sme_clientes');
         foreach ($req as $cliente) {
-            $clientes[] = new Client($cliente['ID'], $cliente['nombre'], $cliente['email'],
-                $cliente['telefono']);
+            $clientes[] = new Client( $cliente['nombre'], $cliente['email'],
+                $cliente['telefono'],$cliente['ID']);
         }
         return $clientes;
 
@@ -86,5 +86,5 @@ class ClientRepository
             Client::save();
         }
     }
-
+     
 }

@@ -17,7 +17,7 @@ class EventRepository
 
         foreach ($req as $action) {
             // falta crearlo bien
-            $actions[] = new Event($action['ID'], $action['nombre'], $action['nombre_sms'], $action['imagen'], $action['lugar'], $action['fecha'], $action['mostrar_comprobar_pulsera'], $action['registro_previo'], $action['registro_email'], $action['registro_telefono'], $action['id_cliente'], $action['id_lugar_fb'], $action['facebook_pagina'], $action['url']);
+            $actions[] = new Event( $action['nombre'], $action['nombre_sms'], $action['imagen'], $action['lugar'], $action['fecha'], $action['mostrar_comprobar_pulsera'], $action['registro_previo'], $action['registro_email'], $action['registro_telefono'], $action['id_cliente'], $action['id_lugar_fb'], $action['facebook_pagina'], $action['url'],$action['ID']);
         }
         return $actions;
     }
@@ -29,7 +29,7 @@ class EventRepository
         $req = $db->prepare('SELECT * FROM sme_eventos WHERE nombre_sms= :nombre_sms');
         $req->execute(array(':nombre_sms' => $nombre_sms));
         $req = $req->fetch();
-        $action = new Event($req['ID'], $req['nombre'], $req['nombre_sms'], $req['imagen'], $req['lugar'], $req['fecha'], $req['mostrar_comprobar_pulsera'], $req['registro_previo'], $req['registro_email'], $req['registro_telefono'], $req['id_cliente'], $req['id_lugar_fb'], $req['facebook_pagina'], $req['url']);
+        $action = new Event( $req['nombre'], $req['nombre_sms'], $req['imagen'], $req['lugar'], $req['fecha'], $req['mostrar_comprobar_pulsera'], $req['registro_previo'], $req['registro_email'], $req['registro_telefono'], $req['id_cliente'], $req['id_lugar_fb'], $req['facebook_pagina'], $req['url'],$req['ID']);
         return $action;
     }
 
@@ -37,9 +37,12 @@ class EventRepository
       $db = Db::getInstance();
       $req = $db->prepare('SELECT * FROM sme_eventos WHERE id_cliente= :id_cliente');
       $req->execute(array(':id_cliente' => $id_cliente));
-      $req = $req->fetch();  
-      $event = new Event($req['ID'],$req['nombre'],$req['nombre_sms'],$req['imagen'],$req['lugar'],$req['fecha'],$req['mostrar_comprobar_pulsera'],$req['registro_previo'],$req['registro_email'],$req['registro_telefono'],$req['id_cliente'],$req['id_lugar_fb'],$req['facebook_pagina'],$req['url']);
-        return $event;
+      $req = $req->fetchAll();  
+      foreach ($req as $event) {
+          $events[] = new Event($event['nombre'],$event['nombre_sms'],$event['imagen'],$event['lugar'],$event['fecha'],$event['mostrar_comprobar_pulsera'],$event['registro_previo'],$event['registro_email'],$event['registro_telefono'],$event['id_cliente'],$event['id_lugar_fb'],$event['facebook_pagina'],$event['url'],$event['ID']);
+      }
+      
+        return $events;
      }
 
 

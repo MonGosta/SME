@@ -11,7 +11,7 @@ class ClientModel
     private $email;
     private $telefono;
 
-    public function __construct( $nombre = "", $email = "", $telefono = "",$id = null )
+    public function __construct( $nombre = "", $email = "", $telefono = "" ,$id = null)
     {
         $this->id = $id;
         $this->nombre = $nombre;

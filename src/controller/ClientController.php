@@ -16,10 +16,7 @@ class ClientController
         $view->render('index.php', ['nombres' => $nombres]);
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 604c6c51aac7067ceb54fe3cc74e983ea607acad
     function register()
     {
          
@@ -67,4 +64,11 @@ class ClientController
         $view = new View("src/views/client");
         $view->render('delete.php', ['client' => $client]);
     }
+
+     function show($id){
+        $client = Repo::findById($id);
+        $view = new View("src/views/client");
+        $view->render('index.php', ['client' => $client]);
+    }
+
 }

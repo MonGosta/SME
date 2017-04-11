@@ -1,17 +1,17 @@
 <ul>
     <?php
-    foreach ($nombres as $user) {
 
 
         echo "<li>";
         ?>
-        <a href="User/show/<?= $user->getNombre(); ?> ">
-            <?php echo $user->getNombre(); ?>
-            <?php echo $user->getEmail(); ?>
+            
+            <?php echo $client->getNombre(); ?>
+            <?php echo $client->getEmail(); ?>
+            <?php echo $client->getTelefono(); ?>
         </a>
         <?php
         echo "</li>";
 
-    }
+    
     ?>
 </ul>
