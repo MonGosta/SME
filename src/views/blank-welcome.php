@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="../public/css/xenon-skins.css">
 	<link rel="stylesheet" href="../public/css/custom.css">
 
-	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="../public/js/jquery-1.11.1.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -85,8 +85,8 @@
 			<!-- Navbar Brand -->
 			<div class="navbar-brand">
 				<a href="../../index.php" class="logo">
-					<img src="../../public/images/logoCasfid.png" width="80" alt="" class="hidden-xs" />
-					<img src="../../public/images/logoCasfid2.png" width="80" alt="" class="visible-xs" />
+					<img src="mongosta/public/images/logoCasfid.png" width="80" alt="" class="hidden-xs" />
+					<img src="mongosta/public/images/logoCasfid2.png" width="80" alt="" class="visible-xs" />
 				</a>
 				<a href="#" data-toggle="settings-pane" data-animate="true">
 					<i class="linecons-cog"></i>
@@ -139,15 +139,15 @@
 					</ul>
 				</li>
 				<li>
-					<a href="layout-variants.html">
+					<a href="../event/index">
 						<i class="linecons-desktop"></i>
 						<span class="title">Eventos</span>
 					</a>
 				</li>
 				<li>
-					<a href="forms-native.html">
+					<a href="../client/index">
 						<i class="linecons-params"></i>
-						<span class="title">Otra cosa</span>
+						<span class="title">Clientes</span>
 					</a>
 				</li>
 				<li>
@@ -185,9 +185,30 @@
 
 			<h3>Here starts everything&hellip;</h3>
 			<br />
-			<?php
-			include($_SERVER['DOCUMENT_ROOT']."/public/sme/sme/src/views/user/welcome.php");
-			?>
+
+			<ul>
+     <p> Usuario </p>
+	<li><?= $user->getUsuario(); var_dump($user)  ?> </li>
+    <p> Cliente </p>
+	<li><?php $client->getNombre(); var_dump($client) ?> </li>
+	 <p> Eventos</p>
+	<li><?= $event->getNombre(); ?> </li>
+
+	<?php
+	foreach ($event as $ev) {
+
+		?>
+         <li><?= $ev->get(); ?> </li>
+   <?php
+	}
+
+    ?>
+
+</ul>
+
+<a href="../event/register"> <button> Nuevo Evento </button> </a>
+<a href="../user/register"> <button> Nuevo Usuario </button> </a>
+
 			<!-- Main Footer -->
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
@@ -225,16 +246,16 @@
 
 
 	<!-- Bottom Scripts -->
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/TweenMax.min.js"></script>
-	<script src="assets/js/resizeable.js"></script>
-	<script src="assets/js/joinable.js"></script>
-	<script src="assets/js/xenon-api.js"></script>
-	<script src="assets/js/xenon-toggles.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<script src="../public/js/TweenMax.min.js"></script>
+	<script src="../public/js/resizeable.js"></script>
+	<script src="../public/js/joinable.js"></script>
+	<script src="../public/js/xenon-api.js"></script>
+	<script src="../public/js/xenon-toggles.js"></script>
 
 
 	<!-- JavaScripts initializations and stuff -->
-	<script src="assets/js/xenon-custom.js"></script>
+	<script src="../public/js/xenon-custom.js"></script>
 
 </body>
 </html>

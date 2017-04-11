@@ -11,7 +11,7 @@
 	<title>Xenon - Login</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
-	<link rel="stylesheet" href="../public/css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="<?php dirname(__FILE__). '../public/css/fonts/linecons/css/linecons.css'?>">
 	<link rel="stylesheet" href="../public/css/fonts/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../public/css/bootstrap.css">
 	<link rel="stylesheet" href="../public/css/xenon-core.css">
@@ -114,7 +114,7 @@
 
 
 	<!-- Bottom Scripts -->
-	<script src="../public/js/bootstrap.min.js"></script>
+	<script src="<?php dirname(__FILE__). '../public/js/bootstrap.min.js'?>"></script>
 	<script src="../public/js/TweenMax.min.js"></script>
 	<script src="../public/js/resizeable.js"></script>
 	<script src="../public/js/joinable.js"></script>
